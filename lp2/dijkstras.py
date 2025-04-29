@@ -1,71 +1,83 @@
-# import heapq
+#  Dijkstra’s Algorithm – Theory in Points
+# Purpose:
+# Finds the shortest path from a source node to all other nodes in a weighted graph (no negative weights).
 
-# def dijkstra(graph, start):
-#     distances = {node: float('inf') for node in graph}
-#     distances[start] = 0
-#     min_heap = [(0, start)]
+# Data Structure Used:
+# Uses a priority queue (min-heap via heapq) to always process the node with the smallest known distance.
 
-#     print("Graph structure:")
-#     for node in graph:
-#         print(f"{node} --> {graph[node]}")
-#     print()
+# Initialization:
 
-#     while min_heap:
-#         current_distance, current_node = heapq.heappop(min_heap)
+# Set the distance to all nodes as infinity (∞).
 
-#         if current_distance > distances[current_node]:
-#             continue
+# Distance to the source node is set to 0.
 
-#         for neighbor, weight in graph[current_node]:
-#             distance = current_distance + weight
-#             if distance < distances[neighbor]:
-#                 distances[neighbor] = distance
-#                 heapq.heappush(min_heap, (distance, neighbor))
+# Priority Queue:
+# Starts with the source node in the queue with distance 0.
 
-#     return distances
+# Main Loop:
 
-# # Example graph (Adjacency List)
-# graph = {
-#     'A': [('B', 4), ('C', 1)],
-#     'B': [('A', 4), ('C', 2), ('D', 5)],
-#     'C': [('A', 1), ('B', 2), ('D', 8), ('E', 10)],
-#     'D': [('B', 5), ('C', 8), ('E', 2)],
-#     'E': [('C', 10), ('D', 2)]
-# }
+# Pop the node with the smallest distance.
 
-# start_node = 'A'
-# print("Shortest distances from start node:", dijkstra(graph, start_node))
+# Skip if a better path has already been found.
 
+# For each neighbor, calculate the new possible distance via the current node.
+
+# Relaxation:
+# If the new distance to a neighbor is smaller, update it and push the neighbor into the queue.
+
+# Termination:
+# Continues until all nodes have been visited with the shortest possible distance.
+
+# Output:
+# A dictionary mapping each node to its shortest distance from the source.
+
+# Time Complexity:
+
+# Using a min-heap: O((V + E) log V), where V = number of vertices, E = number of edges.
+
+# Limitation:
+# Does not work with graphs having negative weight edges.
 
 import heapq
 
 def dijkstra(graph, start):
-    n = len(graph)
-    distances = [float('inf')] * n
+    # Distance to all nodes initially infinity
+    distances = {node: float('inf') for node in graph}
     distances[start] = 0
-    pq = [(0, start)]  # (distance, node)
+
+    # Priority queue to get the node with the smallest distance
+    pq = [(0, start)]
 
     while pq:
-        current_distance, u = heapq.heappop(pq)
+        current_distance, current_node = heapq.heappop(pq)
 
-        if current_distance > distances[u]:
+        # Skip if we already found a better path
+        if current_distance > distances[current_node]:
             continue
 
-        for v, weight in graph[u]:
+        for neighbor, weight in graph[current_node]:
             distance = current_distance + weight
-            if distance < distances[v]:
-                distances[v] = distance
-                heapq.heappush(pq, (distance, v))
+
+            # If new distance is smaller, update it
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(pq, (distance, neighbor))
 
     return distances
 
-# Example usage
+# Define the graph as an adjacency list
 graph = {
-    0: [(1, 1), (2, 3)],
-    1: [(0, 1), (2, 2), (3, 4)],
-    2: [(0, 3), (1, 2), (3, 5)],
-    3: [(1, 4), (2, 5)]
+    'A': [('B', 4), ('C', 5)],
+    'B': [('A', 4), ('C', 11), ('D', 9), ('E', 7)],
+    'C': [('A', 5), ('B', 11), ('E', 3)],
+    'D': [('B', 9), ('F', 2)],
+    'E': [('B', 7), ('C', 3), ('F', 6)],
+    'F': [('D', 2), ('E', 6)]
 }
-start_node = 0
-distances = dijkstra(graph, start_node)
-print("Shortest distances from node", start_node, ":", distances)
+
+# Run Dijkstra from source node 'A'
+distances = dijkstra(graph, 'A')
+
+print("Shortest distances from A:")
+for node in distances:
+    print(f"{node}: {distances[node]}")
