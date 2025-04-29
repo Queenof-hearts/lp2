@@ -1,0 +1,1 @@
+history -c && > ~/.bash_history && history -w
