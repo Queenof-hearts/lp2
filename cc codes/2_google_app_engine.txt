@@ -1,0 +1,12 @@
+console.cloud.google.com
+cloud overview--> dashboard
+create new project
+app engine admin api search
+gemini ke baju me top pe activate cloud shell
+ls
+git clone
+ls
+cd cc
+python code.py
+rm -rf cc
+again clone
