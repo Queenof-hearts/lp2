@@ -1,3 +1,49 @@
+# 🔹 Kruskal's Algorithm with Disjoint Set – Theory in Points
+# ✅ Disjoint Set (Union-Find) – class DisjointSet
+# Purpose:
+# Efficiently tracks connected components of a graph to detect cycles.
+
+# __init__(self, n):
+# Initializes n elements, each in its own set (parent[i] = i).
+
+# find(u):
+
+# Returns the root of the set containing u.
+
+# Uses path compression to flatten the structure, making future operations faster.
+
+# union(u, v):
+
+# Connects the sets containing u and v by linking their roots.
+
+# Ensures no cycle is formed when building MST.
+
+# ✅ Kruskal’s Algorithm – kruskal(graph_edges, num_vertices)
+# Purpose:
+# Finds a Minimum Spanning Tree (MST) by choosing the lowest weight edges without forming cycles.
+
+# Input:
+
+# graph_edges: List of (weight, u, v) tuples.
+
+# num_vertices: Total number of vertices in the graph.
+
+# Steps:
+
+# Sort all edges by increasing weight.
+
+# Initialize a Disjoint Set to track connected components.
+
+# For each edge:
+
+# If u and v are in different sets (no cycle), include the edge in MST.
+
+# Perform union(u, v) to merge the sets.
+
+# Output:
+
+# Returns a list of MST edges and the total minimum weight.
+
 class DisjointSet:
     def __init__(self, n):
         self.parent = list(range(n))
