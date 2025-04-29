@@ -1,0 +1,24 @@
+
+sudo apt-get update
+
+sudo apt-get install apt-transport-https ca-certificates gnupg curl
+
+
+For newer distributions (Debian 9+ or Ubuntu 18.04+) run the following command:
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+
+For older distributions, run the following command:
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+
+
+For newer distributions (Debian 9+ or Ubuntu 18.04+), run the following command:
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+For older distributions that don't support the signed-by option, run the following command:
+echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+
+sudo apt-get update && sudo apt-get install google-cloud-cli
+
+
+gcloud init

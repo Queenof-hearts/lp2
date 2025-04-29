@@ -1,0 +1,56 @@
+Step-by-Step Guide: Installing and Running GDE on Ubuntu
+1. Update the system:
+sudo apt update && sudo apt upgrade -y
+
+2. Install curl if not already installed:
+sudo apt install curl -y
+
+3. Download and install Google Cloud SDK using curl:
+curl https://sdk.cloud.google.com | bash
+
+4. Restart the shell:
+exec -l $SHELL
+
+5. Initialize the Google Cloud SDK:
+gcloud init
+
+6. Authenticate and configure Google Cloud CLI:
+gcloud auth login
+
+7. Set your default project:
+gcloud config set project YOUR_PROJECT_ID
+
+8. Install App Engine SDK for Python:
+gcloud components install app-engine-python
+
+9. Create a directory for your Flask app:
+mkdir helloworld && cd helloworld
+
+10. Create app.yaml file for Google App Engine:
+nano app.yaml
+Add the following content:
+runtime: python39
+entrypoint: python main.py
+
+11. Create main.py (Flask application):
+nano main.py
+Add the following Python code:
+from flask import Flask
+app = Flask(__name__)
+@app.route('/')
+def hello():
+return "Hello, World!"
+if __name__ == '__main__':
+app.run(host='0.0.0.0', port=8080)
+
+12. Install Flask (without virtual environment):
+sudo apt install python3-flask -y
+
+13. Run the Flask app locally:
+python3 main.py
+
+14. Deploy to Google Cloud (GDE):
+gcloud app deploy
+
+15. View the deployed app:
+gcloud app browse
