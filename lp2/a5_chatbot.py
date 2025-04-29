@@ -1,3 +1,63 @@
+# This Python code simulates a simple interactive chatbot that engages the user in conversation and asks basic questions.
+
+# 🔸 Function-wise Explanation
+# greet(bot_name, birth_year)
+
+# Introduces the chatbot using its name and creation year.
+
+# remind_name()
+
+# Asks the user for their name and compliments it.
+
+# guess_age()
+
+# Uses the Chinese Remainder Theorem to guess the user's age.
+
+# Asks for the remainders when dividing the age by 3, 5, and 7.
+
+# Formula:
+
+# python
+# Copy
+# Edit
+# age = (rem3 * 70 + rem5 * 21 + rem7 * 15) % 105
+# count()
+
+# Demonstrates counting ability by printing numbers from 0 to a user-specified value.
+
+# test()
+
+# A multiple-choice quiz asking: "Why do we use methods?"
+
+# Loops until the correct answer (2) is entered.
+
+# end()
+
+# Displays a congratulatory message and ends the conversation.
+
+# 🔸 Sample Output
+# vbnet
+# Copy
+# Edit
+# Hello! My name is TE-Chatbot.
+# I was created in 2022.
+# Please, remind me your name.
+# > Yash
+# What a great name you have, Yash!
+# Let me guess your age...
+# ...
+# Your age is 21; that's a good time to start programming!
+# ...
+# Let's test your programming knowledge.
+# Why do we use methods?
+# ...
+# 2
+# Completed, have a nice day!
+# 🔸 Features
+# Covers input/output, loops, functions, conditionals, and basic logic.
+
+# Great beginner-level Python project.
+
 def greet(bot_name, birth_year):
     print("Hello! My name is {0}.".format(bot_name))
     print("I was created in {0}.".format(birth_year))
