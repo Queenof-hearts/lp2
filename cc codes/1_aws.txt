@@ -1,4 +1,4 @@
 sumitbhise6565@gmail.com
-Pccoersb1@
+Pccoersb@1
 asw managemnt console -> sign up -> sign in in root -> login -> search EC2 dashbort in serch section -> lunch instance -> names and tag -> key pair -> crete new kay pair -> 
 right sise luch instance -> bact to instace menu -> show running state
