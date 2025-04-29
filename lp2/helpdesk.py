@@ -1,3 +1,16 @@
+# ✅ Key Concepts Covered
+# Dictionaries for fast lookup
+
+# Functions
+
+# String manipulation (lower())
+
+# Infinite loop (while True)
+
+# Conditional branching
+
+# Would you like to expand it to include more smart features like keyword matching or voice input?
+
 problem_dict = {
     "printer not working":"check that it is turned on and connected to the network",
     "cant log in":"make sure you are using the correct username and password",
